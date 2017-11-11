@@ -1,0 +1,26 @@
+﻿@model WebT.Models.User
+
+<section class="panel panel-primary">
+    <div class="panel-heading"> <p>@Model.FirstName  @Model.MiddleName  @Model.LastName</p> <p> @Model.ClientType </p> <div class="sum"><p>@Model.TotalSum </p>
+                  <p>
+                      @Html.ActionLink("Просмотр", "UserDetails", "Home", new { id = @Model.Id },
+            new { @class = "viewDialog headLink", data_dialog_title = "Описание" }) |
+                      @Html.ActionLink("Редактировать", "UserEdit", "Home", new { id = @Model.Id },
+            new { @class = "viewDialog headLink", data_dialog_title = "Редактирование" }) |
+                      @Html.ActionLink("Удалить", "UserDelete", "Home", new { id = @Model.Id },
+            new { @class = "viewDialog headLink", data_dialog_title = "Удаление" })
+                      </p>
+                  </div></div>
+    <div class="panel-body">
+        
+        <table>
+            @foreach (var order in Model.Orders)
+            {
+                @Html.Partial("_Order", order);
+            }
+            
+            <tr><td><p> @Html.ActionLink("Добавить заказ", "OrderCreate", "Home", new { userId = Model.Id }, new { @class = "viewDialog", data_dialog_title = "Создание заказа" })</p></td></tr>
+
+        </table>
+    </div>
+</section>

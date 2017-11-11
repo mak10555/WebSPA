@@ -1,0 +1,15 @@
+﻿@model WebT.Models.Order
+
+    <tr>
+    <td>@Model.Id @Model.Name</td>
+    <td>@Model.Sum</td>
+    <td></td>
+    <td>
+        @Html.ActionLink("Просмотр", "OrderDetails", "Home", new { id = @Model.Id },
+            new { @class = "viewDialog", data_dialog_title = "Описание заказа" }) |
+        @Html.ActionLink("Редактировать", "OrderEdit", "Home", new { id = @Model.Id },
+            new { @class = "viewDialog", data_dialog_title = "Редактирование заказа" }) |
+        @Html.ActionLink("Удалить", "OrderDelete", "Home", new { id = @Model.Id },
+            new { @class = "viewDialog", data_dialog_title = "Удаление заказа" })
+    </td>
+    </tr> 

@@ -1,0 +1,22 @@
+﻿@model WebT.Models.OrderViewModel
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div>
+            @Html.LabelFor(model => model.Name)
+            <p>@Html.EditorFor(model => model.Name)</p>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Sum)
+            <p>@Html.EditorFor(model => model.Sum)</p>
+        </div>
+
+        <div>
+            @Html.HiddenFor(model => model.UserId)
+        </div>
+
+        <p><input type="submit" value="Добавить" /></p>
+    }
+</div>

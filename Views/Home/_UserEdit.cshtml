@@ -1,0 +1,28 @@
+﻿@using WebT.Models;
+
+@model WebT.Models.User
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.TotalSum)
+        @Html.HiddenFor(model => model.Id)
+        <div>
+            @Html.LabelFor(model => model.FirstName )
+            <p>@Html.EditorFor(model => model.FirstName)</p>
+        </div>
+        <div>
+            @Html.LabelFor(model => model.MiddleName)
+            <p>@Html.EditorFor(model => model.MiddleName)</p>
+        </div>
+        <div>
+            @Html.LabelFor(model => model.LastName)
+            <p>@Html.EditorFor(model => model.LastName)</p>
+        </div>
+        <div>
+            @Html.LabelFor(model => model.ClientType)
+            <p>@Html.DropDownListFor(user => user.ClientType, new SelectList(Enum.GetValues(typeof(UserTypeEnum))), "Укажите тип клиента")</p>
+        </div>
+        <p><input type="submit" value="Сохранить" /></p>
+    }
+</div>

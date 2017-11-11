@@ -1,0 +1,20 @@
+﻿@using WebT.Models;
+
+@model WebT.Models.User
+
+<h3>Вы действительно хотите удалить данного пользователя?</h3>
+<div>
+    <h3>ID:  @Html.DisplayFor(m => m.Id)</h3>
+    <p>Имя: @Html.DisplayFor(m => m.FirstName)</p>
+    <p>Отчество: @Html.DisplayFor(m => m.MiddleName)</p>
+    <p>Фамилия: @Html.DisplayFor(m => m.LastName)</p>
+    <p>Тип клиента: @Html.DisplayFor(m => m.ClientType)</p>
+    <p>Общая сумма: @Html.DisplayFor(m => m.TotalSum)</p>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <input type="submit" value="Удалить" />
+    }
+</div>

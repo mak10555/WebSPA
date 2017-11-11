@@ -1,0 +1,19 @@
+﻿@model PagedList.IPagedList<WebT.Models.User>
+@using PagedList.Mvc;
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Главная";
+}
+
+<p> @Html.ActionLink("Добавить пользователя", "UserCreate", "Home", new { }, new { @class = "viewDialog", data_dialog_title = "Добавление пользователя" })</p>
+
+@foreach (var order in Model)
+{
+    @Html.Partial("_User", order);
+}
+</br>
+
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
